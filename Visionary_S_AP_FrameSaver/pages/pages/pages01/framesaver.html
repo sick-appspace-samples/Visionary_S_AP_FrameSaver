@@ -1,0 +1,38 @@
+<layout-row id="RowLayout1" style="align-content:center;align-items:center">
+		
+	<sick-viewer2d id="Viewer2D1" protocol="auto" style="width:50%;height:75%" viewer-id="viewer2D">
+		</sick-viewer2d>
+	
+	<layout-column id="ColumnLayout1">
+		<layout-row id="RowLayout2">
+			<davinci-button id="Button1" type="primary" style="align-self:center" title="Saves the image to the public directory of the device">
+			<span>Save to Device</span>
+				<crown-binding event="submit" name="Visionary_S_AP_FrameSaver/saveImage" auto-commit></crown-binding>
+		</davinci-button>
+			
+			
+		</layout-row>
+		<davinci-button id="Button2" type="primary" title="Deletes the saved images in the public directory of the device">
+		<span>Clear saved images</span>
+			<crown-binding event="submit" name="Visionary_S_AP_FrameSaver/deleteImages" auto-commit></crown-binding>
+	</davinci-button>
+		
+		
+	</layout-column>
+	
+	
+	
+			
+		
+		
+		
+		
+		
+		
+	
+	
+		
+	
+	
+	
+</layout-row>

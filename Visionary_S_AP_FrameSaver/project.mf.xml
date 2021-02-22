@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<manifest>
+    <application name="Visionary_S_AP_FrameSaver">
+        <crown name="Visionary_S_AP_FrameSaver">
+            <desc>user script</desc>
+            <serves>
+                <function name="deleteImages">
+                    <trait>released</trait>
+                </function>
+                <function name="saveImage">
+                    <trait>released</trait>
+                </function>
+            </serves>
+        </crown>
+        <meta key="author">AppSpace Sample</meta>
+        <meta key="version">1.0</meta>
+        <meta key="priority">low</meta>
+        <meta key="copy-protected">false</meta>
+        <meta key="read-protected">false</meta>
+        <entry default="FrameSaver.lua" path="scripts"/>
+    </application>
+</manifest>
