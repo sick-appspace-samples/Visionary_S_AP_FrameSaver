@@ -1,24 +1,24 @@
 --[[----------------------------------------------------------------------------
 
   Application Name: Visionary_S_AP_FrameSaver
-    
+
   Summary:
   Save a frame of image to the public directory of the device
-  
+
   Description:
   Set up the camera to take live images continuously. React to the "Submit" event
   from the "Save to device" button to store the image in the public directory of
   the device (Click "Refresh AppData" to see resulting images in the AppData tab).
-  
+
   How to run:
   Start by running the app (F5) or debugging (F7+F10).
   Set a breakpoint on the first row inside the main function to debug step-by-step.
   See the results in the different image viewer on the DevicePage.
-  
+
   More Information:
   If you want to run this app on an emulator some changes are needed to get images.
   The statemap should be used as an error map for overlaying.
-    
+
 ------------------------------------------------------------------------------]]
 --Start of Global Scope---------------------------------------------------------
 -- Variables, constants, serves etc. should be declared here.
@@ -47,7 +47,9 @@ local colorImage = Image.create(640, 512, "RGB24")
 --directory to save the image
 local filePath = "/public/"
 
---@generateFileNames():string
+---@return string
+---@return string
+---@return string
 local function generateFileNames()
   local day, month, year, hour, minute, second = DateTime.getDateTimeValuesLocal()
   local timestamp = year .. month .. day .. "_" .. hour .. minute .. second .. "_"
@@ -55,7 +57,6 @@ local function generateFileNames()
   return timestamp .. "ZMap", timestamp .. "StateMap", timestamp .. "Color"
 end
 
---@saveImage():
 local function saveImage()
   --generate the file names with timestamp
   local zMapImgFileName, stateMapImgFileName, colorImgFileName = generateFileNames()
@@ -67,7 +68,6 @@ local function saveImage()
 end
 Script.serveFunction("Visionary_S_AP_FrameSaver.saveImage", saveImage)
 
---@deleteImages():
 local function deleteImages()
   --List all png files in the directory
   local fileList = File.list(filePath, "*.png")
@@ -89,7 +89,8 @@ end
 --Registration of the 'main' function to the 'Engine.OnStarted' event
 Script.register("Engine.OnStarted", main)
 
---@handleOnNewImage(image:Image,sensordata:SensorData)
+---@param image Image
+---@param sensordata SensorData
 local function handleOnNewImage(images)
   View.addDepthmap(viewer2D, images, cameraModel, {decoLocalZ, decoStatemap}, {"Local Z", "Statemap", "Color"})
 
